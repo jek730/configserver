@@ -1,0 +1,33 @@
+server:
+  port: 3001
+
+spring:
+  # 데이터베이스 설정
+  datasource:
+    driverClassName: '{cipher}b14698fe472128d812a265f12298f2f6141b5e0c22ac2885e1ba8113b99f12046b4662e070e8e49b3836e94acd7a5bea'
+    url: '{cipher}b22823e19a4b1ee045b346f870dc2dfa3e1cfdaf0b05961b662710539d50f69910781f673e6ad1cecbc378ce5cd69228a0229e34468a392b69620bbb1bb0d29d'
+    username: ${db.username}
+    password: ${db.password}
+
+  # JPA 설정
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+    hibernate:
+      ddlAuto: create
+
+  # 파일 업로드 용량 설정
+  servlet:
+    multipart:
+      maxFileSize: 20MB
+      maxRequestSize: 60MB
+      fileSizeThreshold: 30MB
+
+# 로거 설정
+logging:
+  level:
+    org.hibernate.type: trace
+    org.hibernate.orm.jdbc.bind: trace
