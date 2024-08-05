@@ -4,8 +4,8 @@ server:
 spring:
   # 데이터베이스 설정
   datasource:
-    driverClassName: '{cipher}b14698fe472128d812a265f12298f2f6141b5e0c22ac2885e1ba8113b99f12046b4662e070e8e49b3836e94acd7a5bea'
-    url: '{cipher}b22823e19a4b1ee045b346f870dc2dfa3e1cfdaf0b05961b662710539d50f69910781f673e6ad1cecbc378ce5cd69228a0229e34468a392b69620bbb1bb0d29d'
+    driverClassName: '{cipher}920de040b98d5170c36316dd674bb9822a4804f8153550d020220aaa0ede5f7bc05f86ed6b4d4ffdaa0eb4a554fd71ec'
+    url: '{cipher}91b9f5893f8e4217d9c6eed0f60c37376fe26f3097532b31801b834f04fbaa16a6144369e8f6cf0ab31751c2dd910d9e735b281341e48a7998ba5dbdcae6b1be'
     username: ${db.username}
     password: ${db.password}
 
@@ -26,6 +26,7 @@ spring:
       maxRequestSize: 60MB
       fileSizeThreshold: 30MB
 
+
 # 로거 설정
 logging:
   level:
@@ -35,9 +36,32 @@ logging:
 # 유레카 설정
 eureka:
   instance:
-    preferIpAddress: true
+    hostname: ${hostname}
+    #preferIpAddress: true
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defualtZone: ${eurekaHost}/eureka
+      defaultZone: ${eurekaHost}/eureka/
+
+# 액추에이터 설정
+management:
+  endpoint:
+    health:
+      showDetails: always
+    refresh:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health, refresh
+
+
+# JWT 설정
+jwt:
+  secret: ${jwtSecret}
+  validSeconds: ${jwtValidSeconds}
+
+cors:
+  allow:
+    origins: http://joyfarm.xyz
