@@ -9,7 +9,7 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone:
-        - http://${eureka.instance.host}:${server.port}/eureka
+        - http://${eureka.instance.hostname}:${server.port}/eureka/
 
   server:
     waitTimeInMsWhenSyncEmpty: 30000 # 30초에 한번씩 인스턴스 검색
